@@ -11,9 +11,26 @@ export const RightNow = () => {
         const dayOfWeek = daysOfWeek[today.getDay()]
         return [year, month, day, dayOfWeek]
     }, [])
+
+    const getOrdinalSuffix = (day: number) => {
+        if (day % 100 >= 11 && day % 100 <= 13) {
+            return 'th'; // Исключения: 11th, 12th, 13th
+        }
+        switch (day % 10) {
+            case 1:
+                return 'st';
+            case 2:
+                return 'nd';
+            case 3:
+                return 'rd';
+            default:
+                return 'th';
+        }
+    }
+
     return (
         <div>
-            <p className={s.date}>{currentDate}</p>
+            <p className={s.date}>{currentDate}{getOrdinalSuffix(currentDate)} </p>
              {monthNames[currentMonth]} {currentYear}
             <hr/>
             {dayOfWeek}
