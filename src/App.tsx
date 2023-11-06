@@ -1,13 +1,14 @@
-import './App.css'
-import {DatePicker} from "./components/DatePicker";
+import s from './App.module.css'
 import {useState} from "react";
+import {RightNow, DatePicker} from "./components";
 
 function App() {
 const [date, setDate] = useState(() => new Date)
   return (
-    <>
-    <DatePicker value={date} onChange={setDate} />
-    </>
+    <div className={s.container}>
+      <RightNow />
+      <DatePicker value={date} onChange={setDate} />
+    </div>
   )
 }
 

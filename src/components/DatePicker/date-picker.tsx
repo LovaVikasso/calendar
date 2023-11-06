@@ -1,11 +1,12 @@
 import {FC, useMemo} from "react";
+import {monthNames, shortDaysOfWeek} from "../common";
+import {ChevronLeft, ChevronRight, DoubleChevronLeft, DoubleChevronRight} from "../../assets/icons";
+import s from './date-picker.module.scss'
 
 type DatePickerProps = {
     value: Date
     onChange: (value: Date) => void
 }
-const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
 export const DatePicker: FC<DatePickerProps> = ({value, onChange}) => {
     const [year, month, date] = useMemo(() => {
@@ -15,14 +16,6 @@ export const DatePicker: FC<DatePickerProps> = ({value, onChange}) => {
         return [year, month, day]
     }, [value])
 
-    const [currentYear, currentMonth, currentDate, dayOfWeek] = useMemo(() => {
-        const today = new Date
-        const year = today.getFullYear()
-        const month = today.getMonth()
-        const day = today.getDate()
-        const dayOfWeek = daysOfWeek[today.getDay()]
-        return [year, month, day, dayOfWeek]
-    }, [])
 
     const previousMonth = () => {
         let newMonth = month - 1;
@@ -91,22 +84,27 @@ export const DatePicker: FC<DatePickerProps> = ({value, onChange}) => {
         calendarData.push(week);
     }
 
-
     return (
         <div>
-            {currentDate} {monthNames[currentMonth]} {currentYear}
-            <hr/>
-            {dayOfWeek}
-            <hr/>
-            <button onClick={previousYear}>Previous Year</button>
-            <button onClick={previousMonth}>Previous Month</button>
-            <button onClick={nextMonth}>Next Month</button>
-            <button onClick={nextYear}>Next Year</button>
-            <table>
+            <div className={s.navigation}>
+                <div>
+                    <button onClick={previousYear}><DoubleChevronLeft/></button>
+                    <button onClick={previousMonth}><ChevronLeft/></button>
+                </div>
+                <div>
+                    <button onClick={nextMonth}><ChevronRight/></button>
+                    <button onClick={nextYear}><DoubleChevronRight/></button>
+                </div>
+            </div>
+            <div>
+                <h3 className={s.current}>{monthNames[month]} {year}</h3>
+            </div>
+
+            <table className={s.month}>
                 <thead>
-                <tr>
-                    {daysOfWeek.map((day, index) => {
-                        return <th key={index}>{day}</th>
+                <tr >
+                    {shortDaysOfWeek.map((day, index) => {
+                        return <th className={s.cell} key={index}>{day}</th>
                     })}
                 </tr>
                 </thead>
@@ -114,7 +112,7 @@ export const DatePicker: FC<DatePickerProps> = ({value, onChange}) => {
                 {calendarData.map((week, weekIndex) => (
                     <tr key={weekIndex}>
                         {week.map((day, dayIndex) => (
-                            <td key={dayIndex}>{day}</td>
+                            <td className={s.cell} key={dayIndex}>{day}</td>
                         ))}
                     </tr>
                 ))}

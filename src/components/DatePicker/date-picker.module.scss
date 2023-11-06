@@ -1,0 +1,16 @@
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.month {
+  margin: 60px auto;
+}
+.cell {
+  align-self: center;
+  padding: 10px;
+}
+.current {
+  display: flex;
+  justify-content: center;
+}
