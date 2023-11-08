@@ -1,6 +1,9 @@
 .container {
+    background: url('./assets/img/camomile.jpg') no-repeat center;
     max-width: 1140px;
     width:90%;
     height:90%;
-    margin: 50px auto
+    margin: 50px auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }

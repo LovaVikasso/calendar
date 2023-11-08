@@ -29,12 +29,17 @@ export const RightNow = () => {
     }
 
     return (
-        <div>
-            <p className={s.date}>{currentDate}{getOrdinalSuffix(currentDate)} </p>
-             {monthNames[currentMonth]} {currentYear}
-            <hr/>
-            {dayOfWeek}
-            <hr/>
+        <div className={s.container}>
+            <div className={s.dateContainer}>
+                <span className={s.date}>{currentDate} </span><span className={s.suffix}>{getOrdinalSuffix(currentDate)}</span>
+            </div>
+            <div className={s.bottomContainer}>
+            <span className={s.month}>{monthNames[currentMonth]}</span>
+                <div className={s.rightContainer}>
+                    <span className={s.year}>{currentYear}</span>
+                    <span className={s.week}>{dayOfWeek}</span>
+                </div>
+            </div>
         </div>
     );
 }

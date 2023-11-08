@@ -85,7 +85,7 @@ export const DatePicker: FC<DatePickerProps> = ({value, onChange}) => {
     }
 
     return (
-        <div>
+        <div className={s.datePicker}>
             <div className={s.navigation}>
                 <div>
                     <button onClick={previousYear}><DoubleChevronLeft/></button>
@@ -118,7 +118,6 @@ export const DatePicker: FC<DatePickerProps> = ({value, onChange}) => {
                 ))}
                 </tbody>
             </table>
-            <hr/>
         </div>
     )
 }

@@ -1,7 +1,45 @@
+.container {
+  display: flex;
+  margin: 75px 35px 0 30px;
+  flex-direction: column;
+  justify-content: flex-start;
+  opacity: 0.8;
+  color: #ffffff;
+}
+.dateContainer {
+  display: flex;
+  justify-content: start;
+  align-items: end;
+}
 .date {
-  margin: 75px 30px 0 0;
-  //opacity: 0.7;
-  //background-color: rgba(0, 0, 0, 0.3);
-  //color: #d7237d;
-
+  font-size: 110px;
+  line-height: 0.8;
+  font-weight: 600 ;
+}
+.suffix {
+  font-size: 40px;
+  line-height: 1;
+}
+.bottomContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.rightContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+.month {
+  font-size: 100px;
+  line-height: 0.8;
+  font-weight: 300;
+  letter-spacing: -0.05em;
+}
+.year {
+  font-size: 30px;
+  font-weight: 600;
+}
+.week {
+  font-size: 25px;font-weight: 600;
 }
